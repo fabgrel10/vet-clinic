@@ -57,7 +57,7 @@
             "pathGroups": [
               {
                 "group": "type",
-                "pattern": "@app/**",
+                "pattern": "./**/**\\.{css,scss}",
                 "position": "after"
               }
             ],
@@ -78,6 +78,7 @@
       }
     ],
     "no-unused-vars": "warn",
+    "react/function-component-definition": "off",
     "react/react-in-jsx-scope": "off",
     "semi": "error"
   }
