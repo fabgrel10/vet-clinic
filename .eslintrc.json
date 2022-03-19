@@ -71,11 +71,9 @@
     }
   ],
   "rules": {
-    "import/no-extraneous-dependencies": [
+    "jsx-quotes": [
       "error",
-      {
-        "devDependencies": true
-      }
+      "prefer-double"
     ],
     "no-unused-vars": "warn",
     "react/function-component-definition": "off",
