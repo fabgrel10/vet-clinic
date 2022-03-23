@@ -1,13 +1,15 @@
 import Form from './components/Form';
 import Header from './components/Header';
-import PatientList from './components/PatientList';
+import PetList from './components/PetList';
 
 function App() {
   return (
     <div className="container mx-auto mt-10">
       <Header />
-      <Form />
-      <PatientList />
+      <div className="mt-12 flex">
+        <Form />
+        <PetList />
+      </div>
     </div>
   );
 }
