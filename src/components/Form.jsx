@@ -1,6 +1,7 @@
+import PropTypes from 'prop-types';
 import { useState } from 'react';
 
-const Form = () => {
+const Form = ({ patients, setPatients }) => {
   const [petName, setPetName] = useState('');
   const [ownerName, setOwnerName] = useState('');
   const [email, setEmail] = useState('');
@@ -16,6 +17,13 @@ const Form = () => {
       return;
     }
     setError(false);
+    const patientsObj = { petName, ownerName, email, entryDate, symptoms };
+    setPatients([...patients, patientsObj]);
+    setPetName('');
+    setOwnerName('');
+    setEmail('');
+    setEntryDate('');
+    setSymptoms('');
   };
 
   return (
@@ -119,6 +127,12 @@ const Form = () => {
       </form>
     </div>
   );
+};
+
+Form.propTypes = {
+  // eslint-disable-next-line react/forbid-prop-types
+  patients: PropTypes.arrayOf(PropTypes.object).isRequired,
+  setPatients: PropTypes.func.isRequired
 };
 
 export default Form;
