@@ -1,15 +1,19 @@
 import PropTypes from 'prop-types';
-import { useState } from 'react';
+import { useEffect, useState } from 'react';
 
 import Error from './Error';
 
-const Form = ({ patients, setPatients }) => {
+const Form = ({ patients, setPatients, patient }) => {
   const [petName, setPetName] = useState('');
   const [ownerName, setOwnerName] = useState('');
   const [email, setEmail] = useState('');
   const [entryDate, setEntryDate] = useState('');
   const [symptoms, setSymptoms] = useState('');
   const [error, setError] = useState(false);
+
+  useEffect(() => {
+    
+  }, [patient]);
 
   const handleSubmit = event => {
     event.preventDefault();

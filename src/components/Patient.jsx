@@ -1,6 +1,6 @@
 import PropTypes from 'prop-types';
 
-const Patient = ({ patient }) => (
+const Patient = ({ patient, setPatient}) => (
   <div className="mx-5 my-5 rounded-xl bg-white px-5 py-10 shadow-md">
     <p className="mb-3 font-bold uppercase text-gray-700">
       Name:
@@ -30,6 +30,7 @@ const Patient = ({ patient }) => (
       <button
         type="button"
         className="rounded-lg bg-indigo-600 py-2 px-10 font-bold uppercase text-white hover:bg-indigo-700"
+        onClick={() => setPatient(patient)}
       >
         Edit
       </button>
