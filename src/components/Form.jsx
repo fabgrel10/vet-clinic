@@ -1,6 +1,8 @@
 import PropTypes from 'prop-types';
 import { useState } from 'react';
 
+import Error from './Error';
+
 const Form = ({ patients, setPatients }) => {
   const [petName, setPetName] = useState('');
   const [ownerName, setOwnerName] = useState('');
@@ -17,8 +19,24 @@ const Form = ({ patients, setPatients }) => {
       return;
     }
     setError(false);
-    const patientsObj = { petName, ownerName, email, entryDate, symptoms };
+
+    const idGenerator = () => {
+      const date = Date.now().toString(36);
+      const randomNum = Math.random().toString(36).substring(2, 15);
+      return date + randomNum;
+    };
+
+    const patientsObj = {
+      petName,
+      ownerName,
+      email,
+      entryDate,
+      symptoms,
+      id: idGenerator()
+    };
+
     setPatients([...patients, patientsObj]);
+
     setPetName('');
     setOwnerName('');
     setEmail('');
@@ -36,6 +54,7 @@ const Form = ({ patients, setPatients }) => {
         className="mb-10 rounded-lg bg-white py-10 px-5 shadow-md"
         onSubmit={handleSubmit}
       >
+        {error && <Error message="All fields are required." />}
         <div className="mb-5">
           <label
             htmlFor="pet"
@@ -119,11 +138,6 @@ const Form = ({ patients, setPatients }) => {
           className="w-full cursor-pointer bg-indigo-600 p-3 font-bold uppercase text-white transition-colors hover:bg-indigo-700"
           value="Add Patient"
         />
-        {error && (
-          <div className="mt-5 rounded-md bg-red-600 p-3 text-center text-white">
-            <p>Please fill out all fields</p>
-          </div>
-        )}
       </form>
     </div>
   );

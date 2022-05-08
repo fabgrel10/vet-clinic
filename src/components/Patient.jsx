@@ -1,33 +1,30 @@
-const Patient = () => (
+import PropTypes from 'prop-types';
+
+const Patient = ({ patient }) => (
   <div className="mx-5 my-5 rounded-xl bg-white px-5 py-10 shadow-md">
     <p className="mb-3 font-bold uppercase text-gray-700">
       Name:
-      <span className="font-normal normal-case">Rocky</span>
+      <span className="font-normal normal-case">{patient.petName}</span>
     </p>
 
     <p className="mb-3 font-bold uppercase text-gray-700">
       Owner:
-      <span className="font-normal normal-case">Fabrizio</span>
+      <span className="font-normal normal-case">{patient.ownerName}</span>
     </p>
 
     <p className="mb-3 font-bold uppercase text-gray-700">
       Email:
-      <span className="font-normal normal-case">fabgrel10@gmail.com</span>
+      <span className="font-normal normal-case">{patient.email}</span>
     </p>
 
     <p className="mb-3 font-bold uppercase text-gray-700">
       Entry Date:
-      <span className="font-normal normal-case">22/03/2022</span>
+      <span className="font-normal normal-case">{patient.entryDate}</span>
     </p>
 
     <p className="mb-3 font-bold uppercase text-gray-700">
       Symptoms:
-      <span className="font-normal normal-case">
-        Lorem ipsum dolor sit amet consectetur, adipisicing elit. Alias facere
-        tempore totam itaque harum repellendus magnam quia laborum iure
-        veritatis? Eveniet cumque molestiae quisquam. Cupiditate, rerum
-        excepturi! Cumque, debitis illo!{' '}
-      </span>
+      <span className="font-normal normal-case">{patient.symptoms}</span>
     </p>
     <div className="mt-10 flex justify-between">
       <button
@@ -45,5 +42,15 @@ const Patient = () => (
     </div>
   </div>
 );
+
+Patient.propTypes = {
+  patient: PropTypes.shape({
+    petName: PropTypes.string.isRequired,
+    ownerName: PropTypes.string.isRequired,
+    email: PropTypes.string.isRequired,
+    entryDate: PropTypes.string.isRequired,
+    symptoms: PropTypes.string.isRequired
+  }).isRequired
+};
 
 export default Patient;
