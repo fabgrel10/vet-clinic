@@ -1,16 +1,16 @@
-# Journal App
+# Vet Clinic
 
 ![React](https://img.shields.io/badge/-React-61DAFB?logo=react&logoColor=white&style=for-the-badge)
 ![TailwindCSS](https://img.shields.io/badge/tailwindcss-%2338B2AC.svg?style=for-the-badge&logo=tailwind-css&logoColor=white)
 ![Vite](https://img.shields.io/badge/-Vite-646CFF?logo=vite&logoColor=white&style=for-the-badge)
 
-> Journal is an app to keep track of your thoughts, ideas and more.
+> Vet Clinic is an app that allows users to create, read, update, and delete appointments.
 
-![screenshot](./src/assets/images/app_screenshot.png)
+![screenshot](./src/assets/images/app_screenshot.gif)
 
 ## Live Demo
 
-- Coming soon ...
+[Netlify](https://vet-clinic-react.netlify.app/)
 
 ## Table of Contents
 
