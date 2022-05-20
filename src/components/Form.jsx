@@ -3,7 +3,7 @@ import { useEffect, useState } from 'react';
 
 import Error from './Error';
 
-const Form = ({ patients, setPatients, patient }) => {
+const Form = ({ patients, setPatients, patient, setPatient }) => {
   const [petName, setPetName] = useState('');
   const [ownerName, setOwnerName] = useState('');
   const [email, setEmail] = useState('');
@@ -12,7 +12,19 @@ const Form = ({ patients, setPatients, patient }) => {
   const [error, setError] = useState(false);
 
   useEffect(() => {
-    
+    if (Object.keys(patient).length > 0) {
+      setPetName(patient.petName);
+      setOwnerName(patient.ownerName);
+      setEmail(patient.email);
+      setEntryDate(patient.entryDate);
+      setSymptoms(patient.symptoms);
+    } else {
+      setPetName('');
+      setOwnerName('');
+      setEmail('');
+      setEntryDate('');
+      setSymptoms('');
+    }
   }, [patient]);
 
   const handleSubmit = event => {
@@ -35,11 +47,22 @@ const Form = ({ patients, setPatients, patient }) => {
       ownerName,
       email,
       entryDate,
-      symptoms,
-      id: idGenerator()
+      symptoms
     };
 
-    setPatients([...patients, patientsObj]);
+    if (patient.id) {
+      // Edit patient
+      patientsObj.id = patient.id;
+      const updatedPatients = patients.map(p =>
+        p.id === patient.id ? patientsObj : p
+      );
+      setPatients(updatedPatients);
+      setPatient({});
+    } else {
+      // Add patient
+      patientsObj.id = idGenerator();
+      setPatients([...patients, patientsObj]);
+    }
 
     setPetName('');
     setOwnerName('');
@@ -140,7 +163,7 @@ const Form = ({ patients, setPatients, patient }) => {
         <input
           type="submit"
           className="w-full cursor-pointer bg-indigo-600 p-3 font-bold uppercase text-white transition-colors hover:bg-indigo-700"
-          value="Add Patient"
+          value={patient.id ? 'Update Patient' : 'Add Patient'}
         />
       </form>
     </div>
